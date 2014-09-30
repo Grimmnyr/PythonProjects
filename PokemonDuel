@@ -1,0 +1,64 @@
+import random
+
+#test pokemon like game, will add gui later
+Absol = 100
+Pikachu = 100
+Attacks1 = ['Bite', 'Hyper Beam', 'Tackle', 'Use Potion']
+Attacks2 = ['Slam', 'Thunder', 'Thunderbolt', 'Use Potion']
+
+for turn in range(1000):
+    AbsolAttacks = raw_input('Bite HyperBeam Tackle Use Potion:  ')
+    Bite = Pikachu - 20
+    HyperBeam = Pikachu - 30
+    Tackle = Pikachu - 10
+    AbsolUsePotion = Absol + 20
+    Slam = -15
+    Thunder = -25
+    Thunderbolt = -20
+    PikachuUsePotion = +20
+    if AbsolAttacks.startswith('b'):
+        Pikachu -= 20
+        print 'Absol used Bite, Pikachu took 20 damage' 
+    else:
+        if AbsolAttacks.startswith('h'):
+            Pikachu -= 30
+            print 'Absol used Hyper Beam, Pikachu took 30 damage'
+        elif AbsolAttacks.startswith('t'):
+            Pikachu -= 10
+            print 'Absol used Tackle, Pikachu took 10 damage'
+        elif AbsolAttacks.startswith('u'):
+            Absol += 20
+            if Absol >= 100:
+                Absol = 100
+            print 'Absol used Potion and recovered 20 health'
+        else:
+            print 'Try again, type out the whole word or the first letter (b) for bite'
+    if Pikachu >= 30:
+        PikachuAttack = random.choice([Slam, Thunder, Thunderbolt]) # (-15,-25,-20)
+        Absol = Absol + PikachuAttack
+        if PikachuAttack == Slam:
+            print "Pikachu used Slam!"
+        else: 
+            if PikachuAttack == Thunder:
+                print "Pikachu used Thunder!"
+            elif PikachuAttack == Thunderbolt:
+                print "Pikachu used Thunderbolt!"
+    else:
+        if Pikachu <=29:
+            pikachuAttack2 = random.choice([Slam, PikachuUsePotion])
+            if pikachuAttack2 == Slam:
+                Absol = Absol + pikachuAttack2
+                print "Pikachu used Slam!"
+            else: 
+                if pikachuAttack2 == PikachuUsePotion:
+                    Pikachu += 20
+                    print "Pikachu used Potion and restored 20 health!"
+    if Absol <= 0:
+        print "Oh no! Absol fainted!"
+        break
+    if Pikachu <= 0:
+        print "Pikachu fainted! Absol wins!"
+        break
+    print "Absol's health is " + str(Absol)
+    print "Pikachu's health is " + str(Pikachu)
+    
