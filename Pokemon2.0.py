@@ -41,3 +41,27 @@ Venasaur = Pokemon('Venasaur', 100, 'Grass', Vinewhip, Razorleaf, Solarbeam, Cut
 
 Pikachu = Pokemon('Pikachu', 100, 'Electric', Slam, Thunder, Thunderbolt, Tackle)
 
+
+
+print "Choose your Pokemon!"
+
+selection = raw_input('Absol, Charizard, Blastoise, Venasaur, Pikachu: ')
+
+if selection == 'Absol':
+    pokemon1 = Absol
+else:
+    if selection == 'Charizard':
+        pokemon1 = Charizard
+    elif selection == 'Blastoise':
+        pokemon1 = Blastoise
+    elif selection == 'Venasaur':
+        pokemon1 = Venasaur
+    elif selection == 'Pikachu':
+        pokemon1 = Pikachu
+        
+Enemy = random.choice([Absol, Charizard, Blastoise, Venasaur, Pikachu])
+
+if Enemy == pokemon1:
+    Enemy = random.choice([Absol, Charizard, Blastoise, Venasaur, Pikachu])
+    
+print "Your Rival chose " + str(Enemy)
